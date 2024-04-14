@@ -1,5 +1,5 @@
 {
-  "name": "promptopia",
+  "name": "medtrac",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -11,6 +11,7 @@
   "dependencies": {
     "bcrypt": "^5.1.1",
     "eslint": "^8.56.0",
+    "firebase": "^10.11.0",
     "mongodb": "^6.3.0",
     "mongoose": "^8.1.1",
     "next": "14.1.0",

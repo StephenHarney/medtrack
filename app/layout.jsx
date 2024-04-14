@@ -5,7 +5,7 @@ import Provider from '@components/Provider';
 
 export const metadata = {
 
-    title:"promptopia",
+    title:"MedTrack",
     description: 'discover & share AI prompts '
 }
 

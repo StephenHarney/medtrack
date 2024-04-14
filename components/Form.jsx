@@ -8,7 +8,7 @@ const Form = ({ type, post, setPost, submitting, handleSubmit }) => {
       </h1>
       <p className='desc text-left max-w-md'>
         {type} your alarms here for the morning, afternoon or at night 
-        depending on your medication.
+        depending on your medication prescription.
       </p>
 
       <form
