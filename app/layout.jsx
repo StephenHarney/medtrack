@@ -6,7 +6,7 @@ import Provider from '@components/Provider';
 export const metadata = {
 
     title:"MedTrack",
-    description: 'discover & share AI prompts '
+    description: 'Trac your medicne and create your alarms '
 }
 
 const Rootlayout = ({children}) => {

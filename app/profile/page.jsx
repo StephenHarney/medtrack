@@ -31,7 +31,7 @@ useEffect(() => {
  }
 
   const handleDelete = async (post) =>{
-      const hasConfirmed = confirm("are you sure you want to delete this prompt?");
+      const hasConfirmed = confirm("are you sure you want to delete this Alarm?");
 
       if(hasConfirmed){
          try {
