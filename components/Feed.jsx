@@ -23,7 +23,7 @@ const Feed = () => {
   const [searchText, setSearchText] = useState(''); 
   const [searchTimeout, setSearchTimeout] = useState(null);
   const [searchedResults,setSearchResults]  = useState([]);
-  const [posts, setPosts] = useState([]);
+  const [allPosts, setAllPosts] = useState([]);
   
 
   const handleSearchChange = (e) =>{
@@ -47,7 +47,7 @@ const Feed = () => {
       const response = await fetch('/api/prompt'); 
       const data = await response.json(); 
 
-      setPosts(data);
+      setAllPosts(data);
 
 
     }
@@ -57,7 +57,7 @@ const Feed = () => {
   
   const filterPrompts = (searchText) => {
     const regex = new RegExp(searchText, "i");// 'i' flag for case-insensitive search
-    return posts.filter(
+    return allPosts.filter(
       (p) =>
       regex.test(p.creator.username) || 
       regex.test(p.tag) ||
@@ -70,8 +70,8 @@ const Feed = () => {
   const handleTagClick = (tagName) => {
     setSearchText(tagName);
 
-    const searchedResults = filterPrompts(tagName);
-    setSearchResults(searchedResults);
+    const filteredPosts = filterPrompts(tagName);
+    setSearchResults(filteredPosts);
   }
 
   return (
@@ -88,10 +88,13 @@ const Feed = () => {
         />
       </form>
       <PromptCardList 
-        data={posts}
+        data={searchedResults}
         handleTagClick={handleTagClick}
       />
-
+       <PromptCardList 
+        data={allPosts}
+        handleTagClick={handleTagClick}
+      />
     </section>
   )
 }
