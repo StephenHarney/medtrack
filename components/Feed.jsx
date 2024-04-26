@@ -28,10 +28,20 @@ const Feed = () => {
 
   const handleSearchChange = (e) =>{
    e.preventDefault(searchTimeout);
-    searchText(e.traget.value);
-
+    setSearchText(e.target.value);
     
-  }
+   
+    clearTimeout(searchTimeout);
+    setSearchTimeout( 
+    setTimeout(() => {
+      setSearchText(e.target.value);
+      const searchedResults = filterPrompts (e.target.value);
+      setSearchResults(searchedResults);
+      } ,500)
+    );
+
+  };
+
   useEffect(() => {
     const fetchPosts = async () =>{
       const response = await fetch('/api/prompt'); 
@@ -58,10 +68,10 @@ const Feed = () => {
   }
 
   const handleTagClick = (tagName) => {
-    searchText(tagName);
+    setSearchText(tagName);
 
-    const searchText = filterPrompts(tagName);
-    searchedResults(searchedResults);
+    const searchedResults = filterPrompts(tagName);
+    setSearchResults(searchedResults);
   }
 
   return (
@@ -79,7 +89,7 @@ const Feed = () => {
       </form>
       <PromptCardList 
         data={posts}
-        handleTagClick={() => {}}
+        handleTagClick={handleTagClick}
       />
 
     </section>
