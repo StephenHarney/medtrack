@@ -3,7 +3,6 @@
 import { useState,useEffect } from 'react'; 
 
 import PromptCard from './PromptCard';
-import { data } from 'autoprefixer';
 
 const PromptCardList = ({data, handleTagClick}) => {
   return(
@@ -24,31 +23,41 @@ const Feed = () => {
   const [searchText, setSearchText] = useState(''); 
   const [searchTimeout, setSearchTimeout] = useState(null);
   const [searchedResults,setSearchResults]  = useState([]);
-  const [posts, setPosts] = useState([]);
+  const [allPosts, setAllPosts] = useState([]);
   
 
   const handleSearchChange = (e) =>{
    e.preventDefault(searchTimeout);
-    searchText(e.traget.value);
-
+    setSearchText(e.target.value);
     
-  }
+   
+    clearTimeout(searchTimeout);
+    setSearchTimeout( 
+    setTimeout(() => {
+      setSearchText(e.target.value);
+      const searchedResults = filterPrompts (e.target.value);
+      setSearchResults(searchedResults);
+      } ,500)
+    );
+
+  };
+
   useEffect(() => {
     const fetchPosts = async () =>{
       const response = await fetch('/api/prompt'); 
       const data = await response.json(); 
 
-      setPosts(data);
+      setAllPosts(data);
 
 
     }
   
-    fetchPosts(data);
+    fetchPosts();
   }, [])
   
   const filterPrompts = (searchText) => {
     const regex = new RegExp(searchText, "i");// 'i' flag for case-insensitive search
-    return posts.filter(
+    return allPosts.filter(
       (p) =>
       regex.test(p.creator.username) || 
       regex.test(p.tag) ||
@@ -59,10 +68,10 @@ const Feed = () => {
   }
 
   const handleTagClick = (tagName) => {
-    searchText(tagName);
+    setSearchText(tagName);
 
-    const searchText = filterPrompts(tagName);
-    searchedResults(searchedResults);
+    const filteredPosts = filterPrompts(tagName);
+    setSearchResults(filteredPosts);
   }
 
   return (
@@ -79,10 +88,13 @@ const Feed = () => {
         />
       </form>
       <PromptCardList 
-        data={posts}
-        handleTagClick={() => {}}
+        data={searchedResults}
+        handleTagClick={handleTagClick}
       />
-
+       <PromptCardList 
+        data={allPosts}
+        handleTagClick={handleTagClick}
+      />
     </section>
   )
 }
