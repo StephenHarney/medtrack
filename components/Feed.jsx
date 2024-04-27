@@ -3,6 +3,7 @@
 import { useState,useEffect } from 'react'; 
 
 import PromptCard from './PromptCard';
+import { data } from 'autoprefixer';
 
 const PromptCardList = ({data, handleTagClick}) => {
   return(
@@ -42,7 +43,7 @@ const Feed = () => {
 
     }
   
-    fetchPosts();
+    fetchPosts(data);
   }, [])
   
   const filterPrompts = (searchText) => {
