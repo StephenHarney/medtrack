@@ -19,7 +19,7 @@
 }
 
 .main:before {
-  background: radial-gradient(ellipse at bottom, hsla(270, 98%, 40%, 1) 0, transparent 100%);
+  background: radial-gradient(bottom, hsla(270, 98%, 40%, 1) 0, transparent 100%);
   position: absolute;
   content: "";
   z-index: 2;
@@ -48,14 +48,14 @@
     hsla(270, 98%, 72%, 1) 100px,
     transparent 100%
   ),
-
+  
   radial-gradient(at 97% 21%, hsla(315, 98%, 72%, 1) 0px, transparent 50%),
   radial-gradient(at 52% 99%, hsla(164, 98%, 61%, 1) 0px, transparent 50%),
   radial-gradient(at 10% 29%, hsla(196, 96%, 67%, 1) 0px, transparent 50%),
   radial-gradient(at 97% 96%, hsla(18, 60%, 74%, 1) 0px, transparent 50%),
   radial-gradient(at 33% 50%, hsla(202, 67%, 73%, 1) 0px, transparent 50%),
   radial-gradient(at 79% 53%, hsla(243, 68%, 79%, 1) 0px, transparent 50%);
-  
+ 
 
 
   position: absolute;
