@@ -5,7 +5,7 @@ import Provider from '@components/Provider';
 
 export const metadata = {
 
-    title:"MedTrack",
+    title:"MedTrack text-white",
     description: 'Track Your Daily Medicine '
 }
 
