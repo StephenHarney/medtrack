@@ -3,13 +3,17 @@
 
 import { useState, useEffect} from 'react';
 import { useSession } from 'next-auth/react';
-import { useRouter } from 'next/navigation';
 import { useSearchParams } from 'next/navigation'
+
+
 import Profile  from '@components/Profile';
 
 
 const MyProfile = () => {
-    const router = useRouter();
+    const searchParams = useSearchParams()
+
+    const search = searchParams.get('profile')
+    console.log(search)
  
     const {data: session} = useSession();
  
@@ -28,16 +32,8 @@ const MyProfile = () => {
             if(session?.user.id ) fetchPosts();
          }, []);
         
-       
 
-     
-     
-
-
-
-
-
-return (
+ return (
     <Profile 
        name="My"
        desc="Welcome to your personalized profile page"
