@@ -1,3 +1,5 @@
+"use client";
+
 import { Suspense, useState, useEffect } from 'react';
 import { useSearchParams } from 'next/navigation';
 
@@ -13,14 +15,8 @@ const MyProfile = () => {
     fetchSearchParams();
   }, []);
 
-  return (
-    <Suspense fallback={<div>Loading...</div>}>
-      {searchParams && (
-        <div>Search parameter: {searchParams.get('query')}</div>
-      )}
-    </Suspense>
-  );
-};
+  
+
 
  return (
     <Profile 
@@ -32,3 +28,4 @@ const MyProfile = () => {
 
     />
  )  
+};
