@@ -1,21 +1,34 @@
-/*"use client";
+import { Suspense, useState, useEffect } from 'react';
+import { useSearchParams } from 'next/navigation';
 
-import { useEffec, useState } from "react";
-import { useSearchParams } from "next/navigation"; 
+const MyProfile = () => {
+  const [searchParams, setSearchParams] = useState(null);
 
-import Profile
+  useEffect(() => {
+    const fetchSearchParams = async () => {
+      const params = await useSearchParams();
+      setSearchParams(params);
+    };
 
-from "@components/Profile";   
+    fetchSearchParams();
+  }, []);
 
-import React from 'react'
-
-const dUserProfile = () => {
   return (
-    <div> UserProfile
+    <Suspense fallback={<div>Loading...</div>}>
+      {searchParams && (
+        <div>Search parameter: {searchParams.get('query')}</div>
+      )}
+    </Suspense>
+  );
+};
 
-    </div>
-  )
-}
+ return (
+    <Profile 
+       name="My"
+       desc="Welcome to your personalized profile page"
+       data={myposts}
+       handleEdit={handleEdit}
+       handleDelete={handleDelete}
 
-export default UserProfile;
-*/
+    />
+ )  
