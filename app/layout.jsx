@@ -5,31 +5,28 @@ import Provider from '@components/Provider';
 
 export const metadata = {
 
-    title:"MedTrack",
-<<<<<<< HEAD
-    description: 'Track your Medicine with ease '
-=======
-    description: 'discover & share AI prompts '
->>>>>>> 17e1b51f5bafa9bda9911bf99ebe70f3bda2a1d7
-}
+    title: "MedTrack",
+    description: 'Track your Medicine with ease, discover & share AI prompts '
 
-const Rootlayout = ({children}) => {
-  return (
+};
+const Rootlayout = ({ children }) => {
+    return (
         <html lang='eng'>
-                <body> 
-                    <Provider>
+            <body>
+                <Provider>
                     <div className="main">
-                        <div className="gradient"/> 
+                        <div className="gradient" />
                     </div>
                     
                     <main className="app">
-                        <Nav/>
+                        <Nav />
                         {children}
-                </main> 
+                    </main>
                 </Provider>
             </body>
         </html>
-  )
-}
+    );
+};
+
 
 export default Rootlayout;
